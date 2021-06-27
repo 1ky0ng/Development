@@ -64,17 +64,4 @@ class GLAccount extends Model
         'Statuses' => 'status',
         'GenPostingTypes' => 'gen_posting_type'
     ];
-
-    
-    // protected $attributes  = array(
-    //     'no_' => '',
-    //     'name' => '',
-    //     'status' => 1
-    //  );
-     
-    //  public function __construct(array $attributes = array())
-    //  {
-    //      $this->setRawAttributes($this->attributes, true);
-    //      parent::__construct($attributes);
-    //  }
 }
