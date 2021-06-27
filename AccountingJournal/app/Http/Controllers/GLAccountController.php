@@ -35,19 +35,13 @@ class GLAccountController extends Controller
 
         $AccountCategories = GLAccount::AccountCategories;
         $AccountTypes = GLAccount::AccountTypes;
-        $IncomeBalance = GLAccount::IncomeBalance;
-        $DebitCredit = GLAccount::DebitCredit;
         $Statuses = GLAccount::Statuses;
-        $GenPostingTypes = GLAccount::GenPostingTypes;
 
         return view('glaccounts.create')
         ->with('glaccount', (new GLAccount()))
         ->with('AccountCategories', $AccountCategories)
         ->with('AccountTypes', $AccountTypes)
-        ->with('IncomeBalance', $IncomeBalance)
-        ->with('DebitCredit', $DebitCredit)
-        ->with('Statuses', $Statuses)
-        ->with('GenPostingTypes', $GenPostingTypes);
+        ->with('Statuses', $Statuses);
     }
 
     /**
@@ -82,19 +76,13 @@ class GLAccountController extends Controller
     {
         $AccountCategories = GLAccount::AccountCategories;
         $AccountTypes = GLAccount::AccountTypes;
-        $IncomeBalance = GLAccount::IncomeBalance;
-        $DebitCredit = GLAccount::DebitCredit;
         $Statuses = GLAccount::Statuses;
-        $GenPostingTypes = GLAccount::GenPostingTypes;
 
         return view('glaccounts.edit')
         ->with('glaccount', $glaccount)
         ->with('AccountCategories', $AccountCategories)
         ->with('AccountTypes', $AccountTypes)
-        ->with('IncomeBalance', $IncomeBalance)
-        ->with('DebitCredit', $DebitCredit)
-        ->with('Statuses', $Statuses)
-        ->with('GenPostingTypes', $GenPostingTypes);
+        ->with('Statuses', $Statuses)   ;
     }
 
     /**
@@ -106,14 +94,8 @@ class GLAccountController extends Controller
      */
     public function update(Request $request, GLAccount $glaccount)
     {
-        $request->dd();
         $glaccount->fill($request->input());
         $glaccount->save();
-
-        //  $booking->fill($request->input());
-        // $booking->save();
-        // $booking->users()->sync([$request->input('user_id')]);
-
 
         return redirect()->action([GLAccountController::class, 'index']);
     }
