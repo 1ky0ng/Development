@@ -17,8 +17,16 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-//Auth::routes();
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+require __DIR__.'/auth.php';
 
 Route::resource('glaccounts', \App\Http\Controllers\GLAccountController::class);
+Route::resource('genbusspostinggroups', \App\Http\Controllers\GenBusinessPostingGroupController::class);
+Route::resource('genprodpostinggroups', \App\Http\Controllers\GenProductPostingGroupController::class);
+Route::resource('vatbusspostinggroups', \App\Http\Controllers\VATBusinessPostingGroupController::class);
+Route::resource('vatprodpostinggroups', \App\Http\Controllers\VATProductPostingGroupController::class);
+Route::resource('whtbusspostinggroups', \App\Http\Controllers\WHTBusinessPostingGroupController::class);
+Route::resource('whtprodpostinggroups', \App\Http\Controllers\WHTProductPostingGroupController::class);

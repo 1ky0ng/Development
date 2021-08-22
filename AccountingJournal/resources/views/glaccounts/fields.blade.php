@@ -1,62 +1,61 @@
-<div class="row">
-    <div class="col">
-        <div class="form-group row">
-            <label class="col-sm-4 col-form-label" for="no_">No.</label>
-            <div class="col-sm-8">
-                <input name="no_" type="text" class="form-control" placeholder="No." value="{{ $glaccount->no_}}"/>
-            </div>
-        </div>
+<fieldset>
+    <div class="form-group">
+        {!! Form::label('no_', 'No.:') !!}
+        {!! Form::text('no_', $glaccount->no_) !!}
     </div>
-    <div class="col">
-        <div class="form-group row">
-            <label class="col-sm-4 col-form-label" for="name">Name</label>
-            <div class="col-sm-8">
-                <input name="name" type="text" class="form-control" placeholder="Name" value="{{ $glaccount->name}}"/>
-            </div>
-        </div>
-    </div>
-</div>
 
-<div class="row">
-    <div class="col">
-        <div class="form-group row">
-            <label class="col-sm-4 col-form-label"for="account_category">Account Category</label>
-            <div class="col-sm-8">
-                <select name="account_category" class="form-control" id="account_category" required>
-                    @foreach ($AccountCategories as $acctCategory)
-                        <option value="{{ $acctCategory }}" {{ (isset($glaccount->account_category) && $acctCategory === $glaccount->account_category) ? 'selected' : '' }}>{{ $acctCategory }}</option>
-                    @endforeach
-                </select>
-            </div>
-        </div>
+    <div class="form-group">
+        {{ Form::label('name', 'Name') }}
+        {{ Form::text('name', $glaccount->name) }}
     </div>
-    <div class="col">
-        <div class="form-group row">
-            <label class="col-sm-4 col-form-label"for="account_type">Account Type</label>
-            <div class="col-sm-8">
-                <select name="account_type" class="form-control" id="account_type" required>
-                    @foreach ($AccountTypes as $acctType)
-                        <option value="{{ $acctType }}" {{ (isset($glaccount->account_type) && $acctType === $glaccount->account_type) ? 'selected' : '' }}>{{ $acctType }}</option>
-                    @endforeach
-                </select>
-            </div>
-        </div>
-    </div>
-</div>
 
-<div class="row">
-    <div class="col">
-        <div class="form-group row">
-            <label class="col-sm-4 col-form-label"for="status">Status</label>
-            <div class="col-sm-8">
-                <select name="status" class="form-control" id="status" required>
-                    @foreach ($Statuses as $status)
-                        <option value="{{ $status }}" {{ (isset($glaccount->status) && $status === $glaccount->status) ? 'selected' : '' }}>{{ $status }}</option>
-                    @endforeach
-                </select>
-            </div>
-        </div>
+    <div class="form-group">
+        {{ Form::label('account_category', 'Account Category') }}
+        {{ Form::select('account_category', $AccountCategories, $glaccount->account_category) }}
     </div>
-</div>
 
-@csrf
+    <div class="form-group">
+        {{ Form::label('account_type', 'Account Type') }}
+        {{ Form::select('account_type', $AccountTypes, $glaccount->account_type) }}
+    </div>
+
+    <div class="form-group">
+        {{ Form::label('account_subcategory', 'Account Sub-Category') }}
+        {{ Form::text('account_subcategory', '') }}
+    </div>
+
+    <div class="form-group">
+        {{ Form::label('income_balance', 'Income / Balance') }}
+        {{ Form::select('income_balance', $IncomeBalance, $glaccount->income_balance) }}
+    </div>
+
+    <div class="form-group">
+        {{ Form::label('indentation', 'Indentation') }}
+        {{ Form::number('indentation', $glaccount->indentation) }}
+    </div>
+
+    <div class="form-group">
+        {{ Form::label('totaling', 'Totaling') }}
+        {{ Form::text('totaling', $glaccount->totaling) }}
+    </div>
+
+    <div class="form-group">
+        {{ Form::label('debit_credit', 'Debit / Credit') }}
+        {{ Form::select('debit_credit', $DebitCredit, $glaccount->account_category) }}
+    </div>
+
+    <div class="form-group">
+        {{ Form::label('direct_posting', 'Direct Posting') }}
+        {{ Form::checkbox('direct_posting', $glaccount->direct_posting) }}
+    </div>
+
+    <div class="form-group">
+        {{ Form::label('status', 'Status') }}
+        {{ Form::select('status', $Statuses, $glaccount->status) }}
+    </div>
+
+    <div class="form-group">
+        {{ Form::label('gen_posting_type', 'General Posting Type') }}
+        {{ Form::select('gen_posting_type', $AccountTypes, $glaccount->gen_posting_type) }}
+    </div>
+</fieldset>
