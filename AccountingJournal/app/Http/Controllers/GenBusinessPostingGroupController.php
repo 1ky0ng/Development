@@ -35,7 +35,7 @@ class GenBusinessPostingGroupController extends Controller
 
         return view('genbusspostinggroups.form')
             ->with('genbusspostinggroup', (new GenBusinessPostingGroup()))
-            ->with('actiontype', (route($actionTypeSave)))
+            ->with('actionTypeSave', (route($actionTypeSave)))
             ->with('formIdSave', $actionTypeSave);
     }
 
